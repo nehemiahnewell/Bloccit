@@ -1,9 +1,13 @@
 <h1>All Posts</h1>
-<% @posts.each do |post| %>
+<% @posts.each_with_index do |post, inx| %>
     <div class="media">
         <div class="media-body">
             <h4 class="media-heading">
-                <%= link_to post.title, post %>
+                <% if 0 == inx % 5 %>
+                    <%= link_to  "Spam", post %>
+                <% else %>
+                    <%= link_to post.title, post %>
+                <% end %>
             </h4>
         </div>
     </div>

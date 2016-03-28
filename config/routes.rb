@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
-resources :posts
-
-get 'about' => 'welcome#about'
-root 'welcome#index'
+  
+  resources :posts, :advertisements
+  
+  get 'about' => 'welcome#about'
+  root 'welcome#index'
 
 end

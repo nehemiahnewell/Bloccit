@@ -27,8 +27,6 @@ posts = Post.all
     )
 end
 
-post = Post.find_or_create_by(title: "A Random Post", body: "This is just another post")
-post.comments.find_or_create_by(body: "This is just a random comment")
 puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"

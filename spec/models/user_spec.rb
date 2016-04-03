@@ -38,4 +38,19 @@ RSpec.describe User, type: :model do
        expect(user_with_invalid_email).to_not be_valid
      end
    end
+   
+   describe "capitialization" do
+     it "should capitialize first name" do
+       User.new(name: "john Adam", email: "user@bloccit.com", password_digest: "abc123def").save
+       expect(User.last.name).to eq("John Adam")
+     end
+     it "should capitialize last name" do
+       User.new(name: "John adam", email: "user@bloccit.com", password_digest: "abc123def").save
+       expect(User.last.name).to eq("John Adam")
+     end
+     it "should capitialize name" do
+       User.new(name: "john adam", email: "user@bloccit.com", password_digest: "abc123def").save
+       expect(User.last.name).to eq("John Adam")
+     end
+   end
 end

@@ -27,9 +27,18 @@ posts = Post.all
     )
 end
 
-post = Post.find_or_create_by(title: "A Random Post", body: "This is just another post")
-post.comments.find_or_create_by(body: "This is just a random comment")
+# Create Sponsored_post
+500.times do
+    SponsoredPost.create!(
+        topic:  topics.sample,
+        title:  RandomData.random_sentence,
+        body:   RandomData.random_paragraph,
+        price:  1.99
+    )
+end
+
 puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{SponsoredPost.count} sponsored posts created"

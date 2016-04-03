@@ -1,0 +1,15 @@
+<h1>Edit Sponsored Post</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <p>Guidelines for Sponsored Post</p>
+        <ul>
+            <li>Do it on time.</li>
+            <li>Alliterate all artfully.</li>
+            <li>Nothing costing more then -3.94$ .</li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <%= render partial: 'form', locals: { topic: @sponsored_post.topic, sponsored_post: @sponsored_post } %>
+    </div>
+</div>

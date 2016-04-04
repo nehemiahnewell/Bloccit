@@ -25,3 +25,12 @@
 {
     margin-top: 5px;
 }
+
+figure.avatar
+{
+    border-radius: 50%;
+    box-shadow: 1.5em 1.5em 2em black, -.5em -.5em 2.5em #888;
+    background: #ffffde;
+    padding: 1em;
+    border: none;
+}

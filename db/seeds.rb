@@ -34,13 +34,14 @@ posts = Post.all
 100.times do
     Comment.create!(
         post: posts.sample,
+        user: users.sample,
         body: RandomData.random_paragraph
     )
 end
 
 admin = User.create!(
    name:     'Admin User',
-   email:    'admin@example.com',
+   email:    'e@mail.com',
    password: 'helloworld',
    role:     'admin'
  )

@@ -23,6 +23,13 @@ RSpec.describe Post, type: :model do
     it { is_expected.to validate_length_of(:body).is_at_least(20) }
 
    
+     describe "New post upvoted" do
+       it "adds one vote as post is created" do
+         expect(post.up_votes).to eq(1)
+       end
+     end
+
+
     describe "attributes" do
         it "responds to title" do
             expect(post).to respond_to(:title)

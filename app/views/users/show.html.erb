@@ -15,15 +15,14 @@
         <h2 class="media-heading"><%= @user.name %> has not submitted any posts yet.</h2>
         <% end %>
         <small>
-            <%= pluralize(@user.posts.count, 'post') %>,
-            <%= pluralize(@user.comments.count, 'comment') %>
+          <%= pluralize(@user.posts.count, 'post') %>,
+          <%= pluralize(@user.comments.count, 'comment') %>
         </small>
       </div>
     </div>
   </div>
 </div>
 
-// #14
 <h2>Posts</h2>
 <%= render @user.posts %>
 
@@ -36,9 +35,9 @@
     <div class="media">
       <div class="media-body">
         <small>
-         <%= image_tag favorite.post.user.avatar_url(20), class: "gravatar" %> | <%= favorite.post.user.name %>
-         Rated: <%= favorite.post.points %>, comments: <%= favorite.post.comments.count %>
-         <br /> posted <%= time_ago_in_words(favorite.post.created_at) %> ago
+          <%= image_tag favorite.post.user.avatar_url(20), class: "gravatar" %> | <%= favorite.post.user.name %>
+          Rated: <%= favorite.post.points %>, comments: <%= favorite.post.comments.count %>
+          <br /> posted <%= time_ago_in_words(favorite.post.created_at) %> ago
         </small>
       </div>
     </div>

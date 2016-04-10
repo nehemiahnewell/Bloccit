@@ -6,7 +6,7 @@ include SessionsHelper
    let(:my_user) { create(:user) }
    let(:other_user) { create(:user) }
    let(:user_post) { create(:post, topic: my_topic, user: other_user) }
-   let(:my_vote) { Vote.create!(value: 1) }
+   let(:my_vote) { create(value: 1) }
  
  # #17
    context "guest" do

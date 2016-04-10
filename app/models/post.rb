@@ -15,6 +15,8 @@ class Post < ActiveRecord::Base
     validates :topic, presence: true
     validates :user, presence: true
 
+    after_create :favorite_your_post
+    
    def up_votes
  # #9
      votes.where(value: 1).count
@@ -34,5 +36,10 @@ class Post < ActiveRecord::Base
      age_in_days = (created_at - Time.new(1970,1,1)) / 1.day.seconds
      new_rank = points + age_in_days
      update_attribute(:rank, new_rank)
+   end
+   
+   def favorite_your_post
+      Favorite.create(post: self, user: self.user)
+      FavoriteMailer.new_post(self).deliver_now
    end
 end

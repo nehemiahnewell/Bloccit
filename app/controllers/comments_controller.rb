@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+ class CommentsController < ApplicationController
    before_action :require_sign_in
    before_action :authorize_user, only: [:destroy]
    def create
@@ -40,4 +40,4 @@ class CommentsController < ApplicationController
        redirect_to [comment.post.topic, comment.post]
      end
    end
-end
+ end

@@ -39,7 +39,6 @@ RSpec.describe Post, type: :model do
         end
     end
    describe "voting" do
- # #5
      before do
        3.times { post.votes.create!(value: 1) }
        2.times { post.votes.create!(value: -1) }
@@ -47,28 +46,24 @@ RSpec.describe Post, type: :model do
        @down_votes = post.votes.where(value: -1).count
      end
  
- # #6
      describe "#up_votes" do
        it "counts the number of votes with value = 1" do
          expect( post.up_votes ).to eq(@up_votes)
        end
      end
  
- # #7
      describe "#down_votes" do
        it "counts the number of votes with value = -1" do
          expect( post.down_votes ).to eq(@down_votes)
        end
      end
  
- # #8
      describe "#points" do
        it "returns the sum of all down and up votes" do
          expect( post.points ).to eq(@up_votes - @down_votes)
        end
      end
      describe "#update_rank" do
- # #28
        it "calculates the correct rank" do
          post.update_rank
          expect(post.rank).to eq (post.points + (post.created_at - Time.new(1970,1,1)) / 1.day.seconds)

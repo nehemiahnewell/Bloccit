@@ -1,5 +1,5 @@
 <div>
-  <%= render partial: 'votes/voter', locals: { post: @post } %>
+  <div class="call_voteing"><%= render partial: 'votes/voter', locals: { post: @post } %></div>
   <h1>
     <%= @post.title %> <br>
     <small>
@@ -37,12 +37,12 @@
   <% end %>
   <div class="col-md-4">
     <h3>
-      <%= pluralize(@post.points, 'point') %>
+      <div class="vote_total"><%= pluralize(@post.points, 'point') %></div>
       <div>
-        <small><div class="vote_count">
-          <%= pluralize(@post.up_votes, 'up vote') %>,
-          <%= pluralize(@post.down_votes, 'down vote') %>
-        </div></small>
+        <small>
+          <div class="vote_up"><%= pluralize(@post.up_votes, 'up vote') %>,</div>
+          <div class="vote_down"><%= pluralize(@post.down_votes, 'down vote') %></div>
+        </small>
       </div>
     </h3>
     <% if current_user %>

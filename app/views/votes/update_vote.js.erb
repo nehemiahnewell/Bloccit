@@ -1,2 +1,0 @@
-$('.vote_total').html("<%= escape_javascript(<%= post.points %>) %>");
-$('.vote_count').html("<%= escape_javascript(<%= pluralize(@post.up_votes, 'up vote') %>), <br /><%= escape_javascript(<%= pluralize(@post.down_votes, 'down vote') %>) %>");

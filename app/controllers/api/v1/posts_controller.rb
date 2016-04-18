@@ -1,15 +1,4 @@
 class Api::V1::PostsController < Api::V1::BaseController
-
-  def show
-    post = Post.find(params[:id])
-    render json: [post,post.comments], status: 200
-  end
- 
-  def index
-    posts = Post.all
-    render json: posts, status: 200
-  end
-  
   
   def update
     post = Post.find(params[:id])
@@ -24,7 +13,7 @@ class Api::V1::PostsController < Api::V1::BaseController
   def create
     topic = Topic.find(params[:topic_id])
     post = topic.posts.build(post_params)
-    post.user = User.find_by(auth_token: token)
+    post.user = self.authenticate_user
  
     if post.valid?
       post.save!

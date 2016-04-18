@@ -8,5 +8,6 @@
      password pw
      password_confirmation pw
      role :member
+     auth_token SecureRandom.base64(64)
    end
  end

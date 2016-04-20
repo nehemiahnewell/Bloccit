@@ -23,12 +23,15 @@
            </small>
          </div>
        </div>
-     <% end %>
+       <% end %>
          <div>
-   <h3>Comments</h3>
-     <%= render @topic.comments %>
-   </div>
-   </div>
+           <h3>Comments</h3>
+           <%= render @topic.comments %>
+         </div>
+         <% if current_user %>
+           <%= render 'comments/form', comment: Comment.new, commentable: @topic %>
+         <% end %>
+     </div>
    <div class="col-md-4">
      <% if current_user %>
        <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>

@@ -19,7 +19,7 @@
       <%= render @post.comments %>
     </div>
       <% if current_user %>
-        <%= render 'comments/form', comment: Comment.new, commentable: @commentable %>
+        <%= render 'comments/form', comment: Comment.new, commentable: @post %>
       <% end %>
   </div>
   <% if user_is_authorized_for_post?(@post) %>

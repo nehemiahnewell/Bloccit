@@ -3,10 +3,10 @@ class CommentsController < ApplicationController
   before_action :authorize_user, only: [:destroy]
   
   def create
-    @commentable, type = load_commentable[0,1]
+    load_commentable
     comment = @commentable.comments.new(comment_params)
     comment.user = current_user
-    if type == "post"
+    if @resource == "posts"
       if comment.save
         flash[:notice] = "Comment saved successfully."
         redirect_to [@commentable.topic, @commentable]
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
         flash[:alert] = "Comment failed to save."
         redirect_to [@commentable.topic, @commentable]
       end
-    elsif type == "topic"
+    else
       if comment.save
         flash[:notice] = "Comment saved successfully."
         redirect_to [@commentable]
@@ -26,9 +26,9 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    @commentable, type = load_commentable[0,1]
+    load_commentable
     comment = @commentable.comments.find(params[:id])
-    if type == "post"
+    if @resource == "posts"
       if comment.destroy
         flash[:notice] = "Comment was deleted."
         redirect_to [@commentable.topic, @commentable]
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
         flash[:alert] = "Comment couldn't be deleted. Try again."
         redirect_to [@commentable.topic, @commentable]
       end
-    elsif type == "topic"
+    else
       if comment.destroy
         flash[:notice] = "Comment was deleted."
         redirect_to [@commentable]
@@ -60,13 +60,7 @@ class CommentsController < ApplicationController
     end
   end
   def load_commentable
-    call_from = request.path.split('/')
-    if call_from.length == 3 
-      resource, id = call_from[1, 2]
-      return @commentable = [resource.singularize.classify.constantize.find(id), "topic"]
-    else
-      resource, id = call_from('/')[3, 4]
-      return @commentable = [resource.singularize.classify.constantize.find(id), "post"]
-    end
+    @resource, id = request.path.split('/')[1, 2]
+    @commentable = @resource.singularize.classify.constantize.find(id)
   end
 end

@@ -53,10 +53,15 @@ class CommentsController < ApplicationController
   end
    
   def authorize_user
+    load_commentable
     comment = Comment.find(params[:id])
     unless current_user == comment.user || current_user.admin?
       flash[:alert] = "You do not have permission to delete a comment."
-      redirect_to [comment.post.topic, comment.post]
+      if @resource == "posts"
+        redirect_to [comment.commentable.topic, comment.commentable]
+      else
+        redirect_to [comment.commentable]
+      end
     end
   end
   def load_commentable

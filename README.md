@@ -1,6 +1,6 @@
 # Bloccit
 
-Bloccit is a Reddit clone which is an app where people can post, vote on, share and save links and comments.
+Bloccit app is a Reddit clone where people can post, vote on, share and save links and comments.
 
 This app powers Bloccit located [here](http://damp-badlands-49860.herokuapp.com)
 

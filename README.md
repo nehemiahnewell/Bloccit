@@ -72,4 +72,4 @@ Bloccit is released under the [MIT license](https://mit-license.org).
 
 ## Copyright
 
-copyright:: (c) Copyright 2015 Nehemiah Newell. All Rights Reserved.
+copyright:: (c) Copyright 2016 Nehemiah Newell. All Rights Reserved.
